@@ -1,0 +1,53 @@
+<!--index.wxml-->
+  <view class="container">
+  <!-- loading -->
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading> 
+    <!-- 头部 -->
+     <view class="header"> 
+      <!-- 左边 -->
+       <view class="headerItem title">
+        <text>情侣版</text>
+        <text>2048</text>
+      </view> 
+      <!-- 右边 -->
+       <view class="headerItem">
+      <view class="headerItem2">
+       <view class="score" style='margin-right:10px;'>
+            <text>当前</text>
+            <text class="storeColor">{{score}}</text>
+          </view>
+          <view class="score">
+            <text>历史最高</text>
+            <text class="storeColor">{{bestScore}}</text>
+          </view>
+      </view>    
+      </view>
+    </view>
+    <view class="textItem">
+    <text>1.情侣版，你懂的。</text>
+    <text>2.传说达成"相濡以沫"的情侣，都会白头到老呐！</text>
+    </view> 
+    <!-- 中间 -->
+    <view class="game"> 
+    <!-- 矩阵 -->
+    <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <view class='row' wx:for="{{num}}" wx:for-item="row" wx:key="row.key" >
+        <view class='cell' wx:for="{{row}}" wx:for-item="cell" wx:key="cell.key">
+          <view class='cell-con cell-con-{{cell}}'>
+            {{ cellName[cell]}}
+          </view>
+        </view>
+      </view> 
+    </view>
+
+    <!-- game over -->
+    <view class='game-over' hidden='{{!over}}'>
+      <text class='nowScore'>历史最高分：{{bestScore}}</text>
+      <text class='nowScore'>本次成绩：{{score}}</text>
+      <text class='pro'>{{endMsg}}</text> 
+      <button type='primary' bindtap="gameStart" class="btnClass">重新开始</button>
+    </view> 
+  </view>
+  </view> 
